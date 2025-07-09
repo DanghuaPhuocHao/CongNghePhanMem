@@ -1,0 +1,23 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #FAF3E0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* chiếm toàn bộ chiều cao màn hình */
+}
+
+.main-content {
+  flex-grow: 1; /* chiếm phần còn lại */
+  overflow-y: auto; /* cho phép cuộn nếu nội dung dài */
+  padding: 20px;
+}
+
+/* Footer luôn nằm dưới */
+footer {
+  flex-shrink: 0;
+}
