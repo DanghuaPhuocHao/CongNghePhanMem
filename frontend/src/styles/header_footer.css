@@ -1,0 +1,272 @@
+*{
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body{
+  background-color: #FAF3E0;
+  font-family: Tahoma;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.layout{
+  display: flex;
+  flex-direction: column; 
+  min-height: 100vh; 
+}
+
+.header, .noidung, .footer {
+  flex-shrink: 0;        
+}
+
+.header{
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 100px;
+  background-color: #EADBC8;
+  position:fixed;
+  top: 0px;
+  z-index: 1000;
+}
+.left {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.vtlogo{
+  height: 100%;
+}
+.logo {
+  width: auto;
+  height: 100%;
+  transform: scale(1.4);
+}
+
+.store-name {
+  font-size: 30px;
+  color: #5A2C1E;
+  font-weight: bold;
+}
+
+/* Menu nằm gần logo hơn */
+.menu {
+  display: flex;
+  gap: 5px;
+  margin-left: 80px; /* Dịch menu sang trái */
+}
+.menu-btn {
+  background: none;
+  border: none;
+  color: #5A2C1E;
+  font-size: 16px;
+  padding: 6px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.menu-btn:hover {
+  background: #ffffff;
+  color: #5A2C1E;
+  border: 2px solid #5A2C1E;
+}
+.right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-right: 200px;
+}
+
+.cart-icon {
+  font-size: 20px;
+  cursor: pointer;
+  color: #5A2C1E;
+}
+
+.cart-icon:hover {
+  color: white;
+}
+.cart-dot {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 8px;
+  height: 8px;
+  background: limegreen;
+  border-radius: 50%;
+  border: 1.5px solid white;
+  z-index: 2;
+  display: block;
+}
+.btn {
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.login {
+  background-color: #5A2C1E;
+  color: white;
+}
+.btnuser{
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: white;
+  color: #5A2C1E;
+  border: 2px solid  #5A2C1E;
+}
+.btnlogout{
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #5A2C1E;
+  color: white;
+}
+.btnlogout:hover{
+  background-color: white;
+  color: #5A2C1E;
+  border: 2px solid  #5A2C1E;
+}
+
+.register {
+  background-color: #5A2C1E;
+  color: white;
+}
+
+.login:hover {
+  background-color: white;
+  color: #5A2C1E;
+  border: 2px solid  #5A2C1E;
+}
+
+.register:hover {
+  background-color: white;
+  color: #5A2C1E;
+  border: 2px solid  #5A2C1E;
+
+}
+
+.sub-header {
+  padding: 5px;
+  margin: 0 auto;
+  width: 500px;
+  height: 25px;
+  text-align: center;
+  background-color: #D8BFA3;
+  border-radius: 0 0 10px 10px;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+.sub-header h2{
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: #5A2C1E;
+}
+/* FOOTER
+//Footer-logo*/
+.footer {
+  margin-top: auto;
+  max-height: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #EAE2CD;
+  padding: 0px 100px;
+  box-sizing: border-box;
+  gap: 30px;
+}
+
+.footer-logo, 
+.about-section {
+    flex: 1;
+}
+.designers-section,
+.contact-section{
+  flex:1.5;
+}
+.about-section, 
+.designers-section, 
+.contact-section {
+    margin-top: 30px;
+}
+
+.footer-logo {
+  max-width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-footer {
+  width: 200px;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+  transform: scale(1);
+}
+
+.about-section{
+    height: 100%;
+}
+
+.designers-section{
+  margin-left: auto;
+}
+
+.about-section h3,
+.designers-section h3,
+.contact-section h3 {
+    color: #5A2C1E;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0 15px;
+}
+
+.designers-section i,
+.about-section p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    color: #5A2C1E;
+    text-align: justify;
+    font-weight: bold;
+    
+    padding: 0 15px;
+}
+
+.designers-section table tr td{
+  padding: 5px;
+  background:#EAE2CD;
+}
+
+.contact-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.contact-section li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+    color: #5A2C1E;
+    font-weight: bold;    
+    padding: 0 15px;
+}
+
+
+
