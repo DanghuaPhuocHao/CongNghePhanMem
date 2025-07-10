@@ -1,0 +1,160 @@
+*{
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body{
+  background-color: #FAF3E0;
+  font-family: Tahoma;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.layout-gioithieu{
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/*----------- sửa nội dung từ đây----------------*/
+.noidung{
+  width: 900px;
+  margin: 0 auto;
+  margin-top: 60px;
+  border-radius: 45px;
+  flex: 1 0 auto; 
+  display: flex;
+}
+.table_nd{
+  width: 90%;
+  margin: 0 auto;
+  background-color: #E9D3B7;
+  color: #5A2C1E;
+  border-radius: 45px;
+  border-collapse: collapse;
+  border: none;
+}
+.tieude{
+  display: flex;
+  align-items: center; 
+  gap: 10px; 
+  padding-left: 20px;
+}
+.tieude svg {
+  font-size: 1.8em;
+  height: 1em;
+  width: 1em;
+  color: #5A2C1E;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.tieude h3 {
+  margin: 0;
+  font-size: 1.5em;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+.vechungtoi{
+  text-align: center;
+}
+.table_nd td, .table_nd th {
+  border: none;
+}
+.table_nd td{
+  padding: 10px 10px;
+}
+.table_nd td p{
+  text-align: justify;
+  font-size: 20px;  
+  padding-left: 20px;
+  margin-top: 5px;
+}
+.logo_gt{
+  margin-top: -100px;
+  max-width: 400px;
+}
+.logo_lh{
+  margin-top: -100px;
+}
+
+/* Liên hệ */
+.table_nd ul{
+  list-style-type: none;
+  padding: 5px;
+  margin-left: 60px;
+  font-weight: bold;
+}
+.table_nd ul li{
+  margin-bottom: 5px;
+}
+.contact-form {
+  width: 500px;
+  margin: 0 auto;
+  background-color: #E9D3B7;
+  border-radius: 10px;
+  flex-direction: column;
+  gap: 12px;
+  color: #5A2C1E;
+  padding: 20px 18px 16px 18px;
+}
+.contact-form .tieude h3 {
+  font-size: 1.1em;
+  margin-bottom: 8px;
+  color: #5A2C1E;
+  text-align: center;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  font-size: 1em;
+  padding: 8px 10px;
+  border: 1px solid #d8bfa3;
+  border-radius: 7px;
+  outline: none;
+  background: #f9f6f2;
+  color: #5A2C1E;
+  transition: border 0.2s;
+  box-sizing: border-box;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #5A2C1E;
+  background: #fff;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 60px;
+  max-height: 140px;
+}
+
+.btnlienhe {
+  width: 100%;
+  margin: 0 auto;
+  background: #5A2C1E;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 0;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btnlienhe:hover {
+  background: #a9744f;
+}
+
+.success-message {
+  color: #2ecc40;
+  text-align: center;
+  margin-top: 8px;
+  font-weight: bold;
+  font-size: 1em;
+}
