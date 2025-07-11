@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../../styles/admin.css';
 
+
 async function updateOrder(id, data) {
   const res = await fetch(`http://localhost:3000/api/orders/${id}`, {
     method: 'PUT',
