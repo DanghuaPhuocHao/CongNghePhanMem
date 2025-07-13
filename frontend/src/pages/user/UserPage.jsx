@@ -47,6 +47,19 @@ function UserPage() {
     setQuantity(q => Math.max(1, q + delta));
   };
 
+  // Thêm sản phẩm vào giỏ hàng và lưu vào localStorage
+  const addToCart = () => {
+    const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    const idx = storedCart.findIndex(item => item._id === selectedProduct._id);
+    if (idx >= 0) {
+      storedCart[idx].quantity += quantity;
+    } else {
+      storedCart.push({ ...selectedProduct, quantity, note });
+    }
+    localStorage.setItem('cart', JSON.stringify(storedCart));
+    closeOverlay();
+  };
+
   return (
     <div className="layout">
       <div className="noidung">
@@ -99,6 +112,49 @@ function UserPage() {
           ))}
         </div>
       </div>
+
+      {/* Overlay đặt hàng */}
+      {showOverlay && selectedProduct && (
+        <div className="overlay" id="orderOverlay" onClick={closeOverlay}>
+          <div className="order-modal" onClick={e => e.stopPropagation()}>
+            {selectedProduct.image && (
+              <img
+                id="modalImage"
+                src={
+                  selectedProduct.image.startsWith('http')
+                    ? selectedProduct.image
+                    : `http://localhost:5000/${selectedProduct.image}`
+                }
+                alt="Sản phẩm"
+              />
+            )}
+            <div className="modal-content">
+              <h3 id="modalName">{selectedProduct.name}</h3>
+              <div className="quantity-control">
+                <button onClick={() => changeQuantity(-1)}>-</button>
+                <input
+                  type="number"
+                  id="quantityInput"
+                  value={quantity}
+                  min={1}
+                  onChange={e => setQuantity(Math.max(1, Number(e.target.value)))}
+                />
+                <button onClick={() => changeQuantity(1)}>+</button>
+              </div>
+              <p id="giatien">
+                {(selectedProduct.price * quantity).toLocaleString('vi-VN')}đ
+              </p>
+              <textarea
+                id="noteInput"
+                placeholder="Ghi chú cho sản phẩm..."
+                value={note}
+                onChange={e => setNote(e.target.value)}
+              />
+              <button className="confirm-button" onClick={addToCart}>Thêm vào giỏ</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
