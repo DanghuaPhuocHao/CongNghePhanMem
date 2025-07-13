@@ -12,6 +12,7 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import AdminPage from '../pages/admin/AdminPage';
 import UserPage from '../pages/user/UserPage';
+import GioHang from '../pages/user/GioHang';
 
 import GioiThieu from '../pages/GioiThieu';
 import LienHe from '../pages/LienHe';
@@ -26,6 +27,7 @@ function App() {
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+            <Route path="/giohang" component={GioHang} />
             <PrivateRoute path="/admin" component={AdminPage} />
             <Route path="/gioithieu" component={GioiThieu} />
             <Route path="/lienhe" component={LienHe} />
