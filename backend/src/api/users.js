@@ -95,6 +95,49 @@ router.get('/:id', async (req, res) => {
 
 /**
  * @swagger
+ * /api/users:
+ *   post:
+ *     summary: Tạo user mới
+ *     tags: [Users]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               phone:
+ *                 type: string
+ *               address:
+ *                 type: string
+ *               role:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: User đã được tạo
+ *       400:
+ *         description: Lỗi tạo user
+ */
+router.post('/', async (req, res) => {
+  try {
+    const user = new User(req.body);
+    await user.save();
+    const userObj = user.toObject();
+    delete userObj.password;
+    res.status(201).json(userObj);
+  } catch (err) {
+    res.status(400).json({ message: 'Lỗi tạo user!', error: err.message });
+  }
+});
+
+/**
+ * @swagger
  * /api/users/{id}:
  *   put:
  *     summary: Cập nhật user
