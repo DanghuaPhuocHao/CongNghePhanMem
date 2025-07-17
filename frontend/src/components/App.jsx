@@ -11,6 +11,7 @@ import Footer from './Footer';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import AdminPage from '../pages/admin/AdminPage';
+import ProfileUser from '../pages/user/ProfileUser';
 import UserPage from '../pages/user/UserPage';
 import GioHang from '../pages/user/GioHang';
 
@@ -31,6 +32,7 @@ function App() {
             <PrivateRoute path="/admin" component={AdminPage} />
             <Route path="/gioithieu" component={GioiThieu} />
             <Route path="/lienhe" component={LienHe} />
+            <Route path="/profile" component={ProfileUser} />
             <Route exact path="/" component={UserPage} />
           </Switch>
         </main>

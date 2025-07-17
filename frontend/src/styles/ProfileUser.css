@@ -1,0 +1,130 @@
+.layout_profile{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:70px;
+}
+.profile-container {
+  max-width: 400px;
+  margin: 20px auto;
+  background: #D8BFA3;
+  border-radius: 10px;
+  box-shadow: 0 2px 16px #d8bfa350;
+  padding: 20px 22px 22px 22px;
+}
+
+.profile-container h2 {
+  text-align: center;
+  color: #5A2C1E;
+  margin-bottom: 24px;
+  font-size: 1.7em;
+  letter-spacing: 1px;
+}
+
+.profile-info {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  align-items: center;
+  margin: 0 0 14px 0;
+  font-size: 1.1em;
+  min-height: 40px;
+  gap: 0 16px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #5A2C1E;
+  padding: 0 10px;
+}
+
+.profile-info strong {
+  color: #5A2C1E;
+  font-weight: 600;
+  font-size: 1em;
+  margin-left: 0;
+  text-align: left;
+}
+
+.profile-info input {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+  color: #5A2C1E !important;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.profile-info input:focus {
+  border-color: #a9744f;
+  background: #fff;
+}
+
+.profile-btn {
+  width: 100%;
+  margin: 18px 0 0 0;
+  background: #5A2C1E;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 10px 0;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.profile-btn:hover {
+  background-color: white;
+  color: #5A2C1E;
+  border: 2px solid #5A2C1E;
+}
+
+.cancel-btn {
+  background: #ffffff !important;
+  color: #5A2C1E !important;
+  margin-top: 8px;
+}
+
+.cancel-btn:hover {
+  background-color: white !important;
+  color: #5A2C1E !important;
+  border: 2px solid #5A2C1E;
+}
+
+.profile-form {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px; 
+  
+}
+
+.profile-form input[type="password"] {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 2px solid #5A2C1E;
+  font-size: 1em;
+  background: #ffffff;
+  color: #5A2C1E;
+  transition: border 0.2s;
+  box-sizing: border-box;
+}
+
+.profile-form input[type="password"]:focus {
+  border-color: #a9744f;
+  background: #fff;
+}
+
+.profile-msg {
+  margin-top: 12px;
+  font-size: 1em;
+  text-align: center;
+  color: #ff0101; /* Mặc định màu đỏ */
+  font-weight: bold;
+}
+
+.profile-msg.success {
+  color: #1700e7; /* Màu xanh cho thông báo thành công */
+}
