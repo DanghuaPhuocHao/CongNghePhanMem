@@ -1,19 +1,8 @@
-FROM node:14
-
-# Set the working directory
-WORKDIR /usr/src/app
-
-# Copy package.json and package-lock.json
-COPY backend/package*.json ./
-
-# Install backend dependencies
+FROM node:18-alpine
+WORKDIR /app
+COPY package*.json ./
 RUN npm install
-
-# Copy the rest of the backend source code
-COPY backend/src ./src
-
-# Expose the port the app runs on
+COPY . .
 EXPOSE 3000
-
-# Command to run the application
-CMD ["node", "src/app.js"]
+ENV NODE_OPTIONS=--openssl-legacy-provider
+CMD ["npm", "start"]
