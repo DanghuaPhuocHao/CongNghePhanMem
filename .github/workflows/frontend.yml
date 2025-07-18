@@ -36,7 +36,7 @@ jobs:
     - name: Build application
       run: |
         cd frontend
-        NODE_OPTIONS="--openssl-legacy-provider" npm run build
+        npm run build:ci
     
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4

@@ -16,7 +16,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '16'
+        node-version: '18'
         cache: 'npm'
         cache-dependency-path: backend/package-lock.json
     
@@ -56,7 +56,7 @@ jobs:
     - name: Build frontend
       run: |
         cd frontend
-        NODE_OPTIONS="--openssl-legacy-provider" npm run build
+        npm run build:ci
 
   # Job build và deploy
   build-and-deploy:
