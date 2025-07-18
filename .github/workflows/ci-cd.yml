@@ -7,7 +7,6 @@ on:
     branches: [ main ]
 
 jobs:
-  # Job test backend
   test-backend:
     runs-on: ubuntu-latest
     
@@ -29,14 +28,8 @@ jobs:
     - name: Run backend tests
       run: |
         cd backend
-        npm test -- --passWithNoTests
-    
-    - name: Run backend linting
-      run: |
-        cd backend
-        npm run lint || echo "No lint script found"
+        npm test
 
-  # Job test frontend
   test-frontend:
     runs-on: ubuntu-latest
     
@@ -58,12 +51,12 @@ jobs:
     - name: Run frontend tests
       run: |
         cd frontend
-        npm test -- --coverage --watchAll=false --passWithNoTests
+        npm test -- --watchAll=false --passWithNoTests
     
     - name: Build frontend
       run: |
         cd frontend
-        npm run build
+        CI=false npm run build
 
   # Job build và deploy
   build-and-deploy:

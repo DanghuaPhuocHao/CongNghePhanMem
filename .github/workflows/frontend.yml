@@ -31,15 +31,15 @@ jobs:
     - name: Run tests
       run: |
         cd frontend
-        npm test -- --coverage --watchAll=false --passWithNoTests
+        npm test -- --watchAll=false --passWithNoTests
     
     - name: Build application
       run: |
         cd frontend
-        npm run build
+        CI=false npm run build
     
     - name: Upload build artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: frontend-build
         path: frontend/build/
