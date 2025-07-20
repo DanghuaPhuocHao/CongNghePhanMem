@@ -1,0 +1,107 @@
+swagger: "2.0"
+info:
+  description: "API documentation for the Ada Fastfood application."
+  version: "1.0.0"
+  title: "Ada Fastfood API"
+host: "localhost:3000"
+basePath: "/api"
+schemes:
+  - "http"
+paths:
+  /items:
+    get:
+      summary: "Retrieve all food items"
+      description: "Returns a list of all food items available."
+      responses:
+        200:
+          description: "A list of food items"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/FoodItem"
+    post:
+      summary: "Create a new food item"
+      description: "Adds a new food item to the menu."
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Food item to be added"
+          required: true
+          schema:
+            $ref: "#/definitions/FoodItem"
+      responses:
+        201:
+          description: "Food item created"
+          schema:
+            $ref: "#/definitions/FoodItem"
+  /items/{id}:
+    get:
+      summary: "Retrieve a food item by ID"
+      description: "Returns a single food item."
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "A food item"
+          schema:
+            $ref: "#/definitions/FoodItem"
+        404:
+          description: "Food item not found"
+    put:
+      summary: "Update a food item"
+      description: "Updates an existing food item."
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "string"
+        - in: "body"
+          name: "body"
+          description: "Updated food item"
+          required: true
+          schema:
+            $ref: "#/definitions/FoodItem"
+      responses:
+        200:
+          description: "Food item updated"
+          schema:
+            $ref: "#/definitions/FoodItem"
+        404:
+          description: "Food item not found"
+    delete:
+      summary: "Delete a food item"
+      description: "Removes a food item from the menu."
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        204:
+          description: "Food item deleted"
+        404:
+          description: "Food item not found"
+definitions:
+  FoodItem:
+    type: "object"
+    required:
+      - "id"
+      - "name"
+      - "price"
+    properties:
+      id:
+        type: "string"
+        example: "1"
+      name:
+        type: "string"
+        example: "Cheeseburger"
+      price:
+        type: "number"
+        format: "float"
+        example: 5.99
+      description:
+        type: "string"
+        example: "A delicious cheeseburger with cheese and pickles."
