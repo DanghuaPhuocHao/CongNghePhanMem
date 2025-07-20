@@ -1,81 +1,222 @@
-# ada_fastfood Project
+# 🍔 Ada FastFood - Hệ thống Quản lý Nhà hàng Thức ăn Nhanh
 
-## Overview
-The `ada_fastfood` project is a full-stack application that provides a fast food ordering system. It consists of a backend built with TypeScript and Express, and a frontend developed using React. The application adheres to RESTful API principles and is containerized using Docker for easy deployment.
+## 📖 Mô tả Dự án
 
-## Project Structure
+**Ada FastFood** là ứng dụng web fullstack quản lý nhà hàng thức ăn nhanh, được xây dựng với React.js và Node.js. Hệ thống cung cấp giao diện đặt món trực tuyến cho khách hàng và công cụ quản lý cho admin.
+
+### 🎯 Tính năng hiện có
+
+#### 👥 **Khách hàng:**
+- 🔐 Đăng ký/Đăng nhập
+- 🍕 Xem menu sản phẩm
+- 🛒 Thêm sản phẩm vào giỏ hàng
+- 📱 Đặt hàng online
+- 👤 Quản lý thông tin cá nhân
+
+#### 🔧 **Quản trị viên:**
+- 📊 Dashboard quản lý
+- 🍔 Quản lý sản phẩm (CRUD)
+- 📋 Quản lý đơn hàng
+- 👥 Quản lý người dùng
+
+### 🛠️ Tech Stack
+
 ```
-ada_fastfood
-├── backend                # Backend application
-│   ├── src
-│   │   ├── controllers    # Contains API controllers
-│   │   ├── routes         # Defines application routes
-│   │   ├── models         # Data models for database interactions
-│   │   ├── app.ts         # Entry point for the backend application
-│   │   └── types          # Type definitions for the backend
-│   ├── package.json       # Backend dependencies and scripts
-│   ├── tsconfig.json      # TypeScript configuration for the backend
-│   ├── swagger.yaml       # API documentation using Swagger
-│   └── README.md          # Documentation for the backend
-├── frontend               # Frontend application
-│   ├── src
-│   │   ├── components     # React components
-│   │   ├── index.tsx      # Entry point for the frontend application
-│   │   └── types          # Type definitions for the frontend
-│   ├── package.json       # Frontend dependencies and scripts
-│   ├── tsconfig.json      # TypeScript configuration for the frontend
-│   └── README.md          # Documentation for the frontend
-├── docker-compose.yml     # Docker configuration for services
-├── Dockerfile             # Dockerfile for building the application image
-└── README.md              # Overall project documentation
+Frontend:  React 17 + React Router + FontAwesome + CSS3
+Backend:   Node.js + Express.js + MongoDB + Mongoose
+Auth:      Basic session-based authentication
 ```
 
-## Features
-- **Backend**: Built with TypeScript and Express, providing a RESTful API for managing fast food orders.
-- **Frontend**: Developed using React, offering a user-friendly interface for placing orders.
-- **API Documentation**: Automatically generated using Swagger, allowing for easy testing and understanding of the API endpoints.
-- **Docker Support**: The application is containerized using Docker, making it easy to deploy and manage.
+## 🚀 Quick Start
 
-## Getting Started
+### 📋 Yêu cầu:
+- **Node.js** >= 16.0.0
+- **npm** >= 8.0.0
+- **MongoDB** (local hoặc Atlas)
 
-### Prerequisites
-- Node.js
-- Docker
-- Docker Compose
+### ⚡ Cài đặt và chạy:
 
-### Installation
-1. Clone the repository:
-   ```
-   git clone <repository-url>
-   cd ada_fastfood
-   ```
+```bash
+# 1. Clone repository
+git clone https://github.com/DanghuaPhuocHao/CongNghePhanMem.git
+cd CongNghePhanMem
 
-2. Install backend dependencies:
-   ```
-   cd backend
-   npm install
-   ```
+# 2. Cài đặt Backend
+cd backend
+npm install
 
-3. Install frontend dependencies:
-   ```
-   cd frontend
-   npm install
-   ```
+# 3. Cài đặt Frontend
+cd ../frontend
+npm install
 
-### Running the Application
-To run the application using Docker, execute the following command in the root directory:
-```
-docker-compose up
+# 4. Chạy MongoDB (nếu dùng local)
+mongod
+
+# 5. Chạy Backend (Terminal 1)
+cd backend
+npm start
+
+# 6. Chạy Frontend (Terminal 2)
+cd frontend
+npm start
 ```
 
-### Testing the API
-You can use Postman to test the API endpoints defined in the backend. Refer to the `swagger.yaml` file for detailed information on the available endpoints.
+### 🌐 Truy cập ứng dụng:
+- **Frontend:** http://localhost:3000
+- **Backend:** http://localhost:5000
 
-### API Documentation
-The API documentation is available in the `swagger.yaml` file. You can also access it through Swagger UI if configured.
+## 🏗️ Kiến trúc Hệ thống
 
-### Contributing
-Contributions are welcome! Please submit a pull request or open an issue for any enhancements or bug fixes.
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   React App     │    │   Express API   │    │   MongoDB       │
+│   (Port 3000)   │◄──►│   (Port 5000)   │◄──►│   (Port 27017)  │
+│   - Components  │    │   - Routes      │    │   - Collections │
+│   - Pages       │    │   - Models      │    │   - Documents   │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+```
 
-### License
-This project is licensed under the MIT License. See the LICENSE file for details.
+## 📁 Cấu trúc Dự án
+
+```
+ada_fastfood/
+├── 📁 frontend/                    # React Application
+│   ├── 📄 package.json
+│   ├── 📁 public/
+│   ├── 📁 src/
+│   │   ├── 📁 components/         # React components
+│   │   │   ├── App.jsx           # Main app
+│   │   │   ├── Header.jsx        # Navigation
+│   │   │   ├── Footer.jsx        # Footer
+│   │   │   └── admin/            # Admin components
+│   │   ├── 📁 pages/             # Page components
+│   │   │   ├── UserPage.jsx      # Customer page
+│   │   │   ├── Login.jsx         # Login page
+│   │   │   ├── Register.jsx      # Register page
+│   │   │   ├── GioHang.jsx       # Cart page
+│   │   │   └── admin/            # Admin pages
+│   │   └── 📁 styles/            # CSS files
+│
+├── 📁 backend/                     # Express.js API
+│   ├── 📄 package.json
+│   ├── 📁 src/
+│   │   ├── 🚀 app.js             # Main server file
+│   │   ├── 📁 routes/            # API routes
+│   │   ├── 📁 models/            # MongoDB models
+│   │   └── 📁 middleware/        # Express middleware
+│   └── 📁 uploads/               # File uploads
+│
+└── 📁 .github/                     # GitHub Actions
+    └── 📁 workflows/
+        ├── backend.yml           # Backend CI
+        ├── frontend.yml          # Frontend CI
+        └── docker.yml            # Docker build
+```
+
+## 🔧 Cấu hình Backend
+
+### Database Connection:
+Backend sử dụng MongoDB với Mongoose ODM. Cấu hình kết nối database trong `backend/src/app.js`.
+
+### API Routes:
+- Authentication endpoints
+- User management
+- Product management  
+- Order processing
+
+## ⚛️ Cấu hình Frontend
+
+### React Components:
+- Functional components với React Hooks
+- React Router cho navigation
+- CSS modules cho styling
+- FontAwesome cho icons
+
+### Pages hiện có:
+- HomePage / UserPage
+- Login / Register
+- Product listing
+- Shopping Cart (GioHang)
+- Admin dashboard
+
+## 🧪 Testing
+
+```bash
+# Backend tests (nếu có)
+cd backend
+npm test
+
+# Frontend tests (nếu có)
+cd frontend  
+npm test
+```
+
+## 📊 GitHub Actions
+
+Dự án có các workflow CI/CD cơ bản:
+
+1. **Backend CI** - Kiểm tra backend code
+2. **Frontend CI** - Kiểm tra frontend code  
+3. **Docker Build** - Build Docker images
+
+## 🚀 Deployment
+
+### Manual Deployment:
+```bash
+# Build frontend
+cd frontend
+npm run build
+
+# Deploy backend to server
+cd backend
+npm start
+```
+
+### Docker (cơ bản):
+```bash
+# Build images
+docker build -t ada-fastfood-backend ./backend
+docker build -t ada-fastfood-frontend ./frontend
+
+# Run containers
+docker run -p 5000:5000 ada-fastfood-backend
+docker run -p 3000:3000 ada-fastfood-frontend
+```
+
+## 📚 API Endpoints (cơ bản)
+
+```
+GET    /api/products        # Lấy danh sách sản phẩm
+POST   /api/products        # Tạo sản phẩm mới (admin)
+GET    /api/users           # Lấy thông tin user
+POST   /api/auth/login      # Đăng nhập
+POST   /api/auth/register   # Đăng ký
+```
+
+## 🤝 Contributing
+
+1. Fork repository
+2. Tạo feature branch (`git checkout -b feature/new-feature`)
+3. Commit changes (`git commit -m 'Add new feature'`)
+4. Push to branch (`git push origin feature/new-feature`)
+5. Tạo Pull Request
+
+## 👥 Team
+
+| Role | Name | GitHub |
+|------|------|---------|
+| **Project Owner** | Danghua Phuoc Hao | [@DanghuaPhuocHao](https://github.com/DanghuaPhuocHao) |
+| **Developer** | Nguyen Phuc An | [@phucan22](https://github.com/phucan22) |
+
+## 🔗 Links
+
+- **📚 Project Repository:** [GitHub](https://github.com/DanghuaPhuocHao/CongNghePhanMem)
+- **🐛 Issues:** [GitHub Issues](https://github.com/DanghuaPhuocHao/CongNghePhanMem/issues)
+
+---
+
+<div align="center">
+
+**🍔 Made with ❤️ by Ada FastFood Team**
+
+</div>

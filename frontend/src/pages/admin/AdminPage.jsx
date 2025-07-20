@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import Sidebar from '../../components/admin/Sidebar';
 import Overview from '../../components/admin/Overview';
-import Orders from '../../components/admin/Orders';import Users from '../../components/admin/Users';
+import Orders from '../../components/admin/Orders';
+import Products from '../../components/admin/Products';
+import ProductGroups from '../../components/admin/ProductGroups';
+import Users from '../../components/admin/Users';
+import Contacts from '../../components/admin/Contacts';
 import '../../styles/admin.css';
 
 function AdminPage() {
@@ -13,8 +17,14 @@ function AdminPage() {
         return <Overview />;
       case 'orders':
         return <Orders />;
+      case 'products':
+        return <Products />;
+      case 'productGroups':
+        return <ProductGroups />;
       case 'users':
         return <Users />;
+      case 'contacts':
+        return <Contacts />;
       default:
         return <Overview />;
     }
