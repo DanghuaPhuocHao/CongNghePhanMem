@@ -5,7 +5,10 @@ function Sidebar({ setActivePage, activePage }) {
   const menu = [
     { key: 'overview', label: 'Tổng quan' },
     { key: 'orders', label: 'Đơn đặt hàng' },
-    { key: 'users', label: 'Người dùng' }
+    { key: 'products', label: 'Sản phẩm' },
+    { key: 'productGroups', label: 'Nhóm sản phẩm' },
+    { key: 'users', label: 'Người dùng' },
+    { key: 'contacts', label: 'Liên hệ' }
   ];
 
   return (

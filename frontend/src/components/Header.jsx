@@ -41,6 +41,11 @@ function Header() {
             <button className="menu-btn" onClick={() => history.push('/')}>Trang chủ</button>
             <button className="menu-btn" onClick={() => history.push('/gioithieu')}>Giới thiệu</button>
             <button className="menu-btn" onClick={() => history.push('/lienhe')}>Liên hệ</button>
+            {user && user.role === 'admin' && (
+              <button className="menu-btn admin-btn" onClick={() => history.push('/admin')}>
+                Trang quản trị
+              </button>
+            )}
           </nav>
         )}
       </div>
