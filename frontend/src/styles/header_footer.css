@@ -75,6 +75,20 @@ body{
   color: #5A2C1E;
   border: 2px solid #5A2C1E;
 }
+
+/* Nút Trang quản trị đặc biệt cho admin */
+.menu-btn.admin-btn {
+  background: none;
+  color: 5A2C1E;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.menu-btn.admin-btn:hover {
+  background: white;
+  color: #5A2C1E;
+  border: 2px solid #5A2C1E;
+}
 .right {
   display: flex;
   align-items: center;

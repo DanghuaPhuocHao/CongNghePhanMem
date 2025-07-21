@@ -9,7 +9,7 @@ import Contacts from '../../components/admin/Contacts';
 import '../../styles/admin.css';
 
 function AdminPage() {
-  const [activePage, setActivePage] = useState('overview');
+  const [activePage, setActivePage] = useState( 'overview');
 
   const renderContent = () => {
     switch (activePage) {
