@@ -220,4 +220,148 @@ router.get('/profile', authMiddleware, async (req, res) => {
   res.json(user);
 });
 
+/**
+ * @swagger
+ * /api/auth/profile:
+ *   put:
+ *     summary: Cập nhật thông tin cá nhân (yêu cầu đăng nhập)
+ *     tags: [Auth]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               phone:
+ *                 type: string
+ *               address:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Cập nhật thành công
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                 user:
+ *                   type: object
+ *                   properties:
+ *                     _id:
+ *                       type: string
+ *                     username:
+ *                       type: string
+ *                     email:
+ *                       type: string
+ *                     phone:
+ *                       type: string
+ *                     address:
+ *                       type: string
+ *                     role:
+ *                       type: string
+ *       400:
+ *         description: Email đã được sử dụng bởi user khác
+ *       401:
+ *         description: Không có token hoặc token không hợp lệ
+ */
+router.put('/profile', authMiddleware, async (req, res) => {
+  try {
+    const { email, phone, address } = req.body;
+    const userId = req.user._id;
+
+    // Kiểm tra email có bị trùng với user khác không
+    if (email) {
+      const existingUser = await User.findOne({ 
+        email, 
+        _id: { $ne: userId } // Loại trừ chính user hiện tại
+      });
+      if (existingUser) {
+        return res.status(400).json({ message: 'Email đã được sử dụng bởi người dùng khác!' });
+      }
+    }
+
+    // Cập nhật thông tin
+    const updateData = {};
+    if (email) updateData.email = email;
+    if (phone) updateData.phone = phone;
+    if (address) updateData.address = address;
+
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      updateData,
+      { new: true }
+    ).select('-password');
+
+    res.json({
+      message: 'Cập nhật thông tin thành công!',
+      user: updatedUser
+    });
+  } catch (err) {
+    res.status(500).json({ message: 'Lỗi server!' });
+  }
+});
+
+/**
+ * @swagger
+ * /api/auth/change-password:
+ *   put:
+ *     summary: Đổi mật khẩu (yêu cầu đăng nhập)
+ *     tags: [Auth]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               currentPassword:
+ *                 type: string
+ *               newPassword:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Đổi mật khẩu thành công
+ *       400:
+ *         description: Mật khẩu hiện tại không đúng
+ *       401:
+ *         description: Không có token hoặc token không hợp lệ
+ */
+router.put('/change-password', authMiddleware, async (req, res) => {
+  try {
+    const { currentPassword, newPassword } = req.body;
+    const userId = req.user._id;
+
+    // Lấy user với password để verify
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(400).json({ message: 'Người dùng không tồn tại!' });
+    }
+
+    // Kiểm tra mật khẩu hiện tại
+    const isMatch = await bcrypt.compare(currentPassword, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Mật khẩu hiện tại không đúng!' });
+    }
+
+    // Hash mật khẩu mới
+    const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+
+    // Cập nhật mật khẩu
+    await User.findByIdAndUpdate(userId, { password: hashedNewPassword });
+
+    res.json({ message: 'Đổi mật khẩu thành công!' });
+  } catch (err) {
+    res.status(500).json({ message: 'Lỗi server!' });
+  }
+});
+
 module.exports = router;
